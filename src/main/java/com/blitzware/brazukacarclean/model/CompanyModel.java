@@ -1,16 +1,22 @@
 package com.blitzware.brazukacarclean.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +31,8 @@ public class CompanyModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@OneToOne(cascade = CascadeType.PERSIST)
+	private LoginModel login;
 	@NotNull
 	@NotBlank
 	@NotEmpty
@@ -42,4 +50,7 @@ public class CompanyModel {
 	@NotEmpty
 	@Column(name = "STR_CONTACT_NUMBER")
 	private String contactNumber;
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.MERGE, orphanRemoval = true, fetch = FetchType.EAGER)
+	private List<ServiceItemModel> services;
 }

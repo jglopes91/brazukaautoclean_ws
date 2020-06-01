@@ -12,4 +12,5 @@ public class APIConstants {
 	public static final String OPENAPI_URL = "/v3/api-docs/**";
 	public static final String SWAGGER_URL = "/swagger-ui.html";
 	public static final String SWAGGER_BUILD_URL = "/swagger-ui/**";
+	public static final String COMPANY_URL = "/api/company/";
 }

@@ -40,7 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private JwtAuthenticationEntryPoint unauthorizedHandler;
 
 	private static final String[] AUTH_URI_LIST = { APIConstants.OPENAPI_URL, APIConstants.SWAGGER_BUILD_URL,
-			APIConstants.SWAGGER_URL, APIConstants.USER_URL.concat("/register"), APIConstants.LOGIN_URL.concat("/login") };
+			APIConstants.SWAGGER_URL, APIConstants.USER_URL.concat("/register"), APIConstants.LOGIN_URL.concat("/login"),
+			APIConstants.COMPANY_URL.concat("/register")};
 
 	@Bean
 	public JwtAuthenticationFilter jwtAuthenticationFilter() {
