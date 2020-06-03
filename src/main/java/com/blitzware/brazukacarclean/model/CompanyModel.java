@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -53,4 +54,7 @@ public class CompanyModel {
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.MERGE, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<ServiceItemModel> services;
+	@Lob
+	@Column(name = "B64_LOGO")
+	private String logo;
 }

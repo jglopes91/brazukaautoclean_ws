@@ -73,4 +73,8 @@ public class CompanyService {
 		return null;
 	}
 
+	public List<CompanyModel> findNearby(Double latitude, Double longitude) {
+		return companyRepository.findAll();
+	}
+
 }

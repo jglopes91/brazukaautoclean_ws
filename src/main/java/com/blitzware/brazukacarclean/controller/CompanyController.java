@@ -64,4 +64,12 @@ public class CompanyController {
 	public ResponseEntity<Void> deleteByIdService(@PathVariable("idService") Long idService) {
 		return new ResponseEntity<>(companyService.deleteById(idService), HttpStatus.NO_CONTENT);
 	}
+
+	@Secured("ROLE_USER")
+	@GetMapping(value = "/nearby/{latitude}/{longitude}")
+	public ResponseEntity<List<CompanyModel>> getByLocation(@PathVariable("latitude") Double latitude,
+			@PathVariable("longitude") Double longitude) {
+		return new ResponseEntity<>(companyService.findNearby(latitude, longitude), HttpStatus.OK);
+	}
+
 }

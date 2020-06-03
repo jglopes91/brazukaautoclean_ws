@@ -12,14 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -52,10 +51,9 @@ public class UserModel {
 	@Size(min = 11, max = 11)
 	@Column(name = "STR_CPF", unique = true)
 	private String cpf;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@NotNull
 	@Column(name = "DT_BIRTHDATE")
-	@Temporal(TemporalType.DATE)
+	@JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date birthDate;
 	@OneToOne(cascade = CascadeType.PERSIST, orphanRemoval = true)
 	private AddressModel address;
